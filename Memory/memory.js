@@ -2,10 +2,16 @@ window.onload = function(){
     init();
 
 };
+const gameList = [];
+const gameBoard = document.querySelector(".game-board");
+const clickedElements = []; 
+
 
 
 function init(){
     getRandomWords();
+    mixElements(gameList);
+    drawGrid();
 
 }
 
@@ -90,7 +96,7 @@ const dictionary =
   },
 ]
 
-const gameList = [];
+
 
 
 
@@ -115,6 +121,86 @@ function getRandomWords() {
         }
         console.log(gameList);
     }
+
+
+    function mixElements(array) {
+      let currentIndex = array.length;
+      let randomIndex;
+      
+    
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+    
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+      console.log(array);
+      return array;
+    }
+
+    function drawGrid(){
+      for(let i=0; i<gameList.length; i++){
+        let field = document.createElement("div");
+        field.classList.add("game-field");
+        gameBoard.appendChild(field);
+        
+        let p = document.createElement("p")
+        p.innerHTML = gameList[i].text;
+        p.style.display = 'none';
+        field.appendChild(p);
+
+        //field.dataset.cardType = gameList[i];
+        field.dataset.wordId = gameList[i].id;
+        field.dataset.fieldId = i+1;
+        
+      
+      }
+
+
+      let elements = Array.from(document.querySelectorAll(".game-field"));
+      
+      for(let element of elements){
+        element.addEventListener("click", (e)=>{
+          console.log(element);
+
+          element.style.backgroundColor = "white";
+         
+
+
+          })}}
+
+
+
+        /* if (!clickedElement[0] || (clickedElement[0].dataset.index !== e.target.dataset.index)) {
+            this.tilesChecked.push(e.target);
+            e.target.style.backgroundImage = `url(${this.tilesImg[e.target.dataset.cardType]})`;*/
+
+          
+
+    
+
+      
+
+
+    
+
+
+
+      
+    
+
+
+
+
+
+
+    
+   
 
 
 
