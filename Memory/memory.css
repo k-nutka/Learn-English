@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(-20deg, #c4a7f0 0%, #d2b8fc 100%);
+}
+
+.game-board{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background-color: white;
+    border-radius: 50px;
+    gap:10px
+}
+
+
+
+
+

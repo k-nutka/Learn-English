@@ -1,0 +1,20 @@
+{
+    "Dictionary":{
+    "EnglishWords": [
+        {"id": 1,
+        "text": "name"
+        },
+        {"id": 2,
+        "text": "cat"
+        }
+    ],
+    "PolishWords": [
+        {"id": 1,
+        "text": "imie"
+        },
+        {"id": 2,
+        "text": "kot"
+        }
+    ]
+    }
+}
