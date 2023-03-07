@@ -4,14 +4,20 @@ window.onload = function(){
 };
 const gameList = [];
 const gameBoard = document.querySelector(".game-board");
-const clickedElements = []; 
+let clickedFieldsId = [];
+let clickedWordsId = [];
+let htmlScore = document.querySelector(".score");
+let score = 0;
+
+
+
 
 
 
 function init(){
     getRandomWords();
     mixElements(gameList);
-    drawGrid();
+    clickFunction()
 
 }
 
@@ -143,36 +149,74 @@ function getRandomWords() {
       return array;
     }
 
-    function drawGrid(){
+    function clickFunction(){
       for(let i=0; i<gameList.length; i++){
         let field = document.createElement("div");
         field.classList.add("game-field");
         gameBoard.appendChild(field);
-        
-        let p = document.createElement("p")
-        p.innerHTML = gameList[i].text;
-        p.style.display = 'none';
-        field.appendChild(p);
+       
 
         //field.dataset.cardType = gameList[i];
         field.dataset.wordId = gameList[i].id;
         field.dataset.fieldId = i+1;
+        field.dataset.text = gameList[i].text
         
       
       }
-
-
       let elements = Array.from(document.querySelectorAll(".game-field"));
+ 
+
       
       for(let element of elements){
         element.addEventListener("click", (e)=>{
-          console.log(element);
-
           element.style.backgroundColor = "white";
-         
+          element.innerHTML = element.dataset.text;
+          clickedFieldsId.push(Number(element.dataset.fieldId));
+          clickedWordsId.push(Number(element.dataset.wordId));
+
+          console.log(clickedFieldsId);
+          console.log(clickedWordsId);
+
+       
+            if(clickedFieldsId.length===2
+             && clickedFieldsId[0] !== clickedFieldsId[1]
+             && clickedWordsId.length===2
+             && clickedWordsId[0] === clickedWordsId[1])
+             {
+            console.log("Para");
+
+            elements[clickedFieldsId[0]-1].style.visibility= "hidden";
+            elements[clickedFieldsId[1]-1].style.visibility= "hidden";
+
+            clickedFieldsId.splice(0,2);
+            clickedWordsId.splice(0,2);
+            console.log(clickedFieldsId);
+            console.log(clickedWordsId);
+            score++;
+            htmlScore.innerHTML=score;
+            
+          }else if(clickedFieldsId.length===2 
+            && clickedFieldsId[0] == clickedFieldsId[1]) {
+            console.log("Ten sam id");
+          }
+        
+          
+        
+        })}
+        console.log("fields id: " + clickedFieldsId + "  " + "words id.:  " + clickedWordsId);
 
 
-          })}}
+
+
+
+  }
+
+
+
+
+
+
+
 
 
 
