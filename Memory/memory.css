@@ -72,12 +72,42 @@ body{
     font-size: 30px;
     font-weight: bold;
     text-align: end;
-
-
-
-
-
 }
+
+.memory-modal{
+    display: none;
+    position: absolute;
+    border: 5px double purple;
+    background-image: linear-gradient(-20deg, #d5bff5 0%, #c924db 100%);
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    height: 300px;
+    width: 500px;
+ 
+}
+.memory-modal-content{
+
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(56, 6, 56);
+}
+
+
+#menu-button, #play-again-button {
+    background-image: linear-gradient(-20deg, #906cc7 0%, #d947e9 100%);
+    outline: none;
+    border-color: #906cc7;
+    height: 30px;
+    width: 300px;
+    border-radius: 30px;
+    margin: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
 
 
