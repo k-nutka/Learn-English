@@ -1,45 +1,57 @@
+
 window.onload = function () {
-  document.getElementById("start-memory").addEventListener("click", (e)=> init(e));
+  document.getElementById("start-memory").addEventListener("click", (e)=> app.init(e));
 };
-let gameList = [];
-const gameBoard = document.querySelector(".game-board");
-let clickedFieldsId = [];
-let clickedWordsId = [];
-let htmlScore = document.querySelector(".score");
-let score = 0;
-const scoreArray =[];
-const memoryModal = document.querySelector(".memory-modal")
-const menuButton =  document.getElementById("menu-button")
-const playAgainButton = document.getElementById("play-again-button");
 
 
-menuButton.addEventListener("click", function(){
+const app ={
+gameList: [],
+gameBoard:document.querySelector(".game-board"),
+clickedFieldsId:[],
+clickedWordsId:[],
+htmlScore:document.querySelector(".score"),
+score: 0,
+scoreArray:[],
+memoryModal:document.querySelector(".memory-modal"),
+menuButton:document.getElementById("menu-button"),
+playAgainButton:document.getElementById("play-again-button"),
+
+replaceFunction(){this.menuButton.addEventListener("click", function(){
   window.location.replace("http://127.0.0.1:5500/index.html");
 }
 );
 
-playAgainButton.addEventListener("click", (e)=> {
-  score=0;
-  init(e);
-  memoryModal.style.display = "none";
+},
 
-}
+playAgainFunction(){
+  this.playAgainButton.addEventListener("click", (e)=> {
+    this.score=0;
+    this.init(e);
+    this.memoryModal.style.display = "none";
+  
+  }
+  
+    );
 
-  );
+},
+
+
+init(){
+  this.startGame();
+  this.getRandomWords();
+  this.mixElements(this.gameList);
+  this.clickFunction();
+  this.replaceFunction();
+  this.playAgainFunction();
+  document.getElementById("start-memory").addEventListener("click", (e)=> this.startGame(e));
 
 
 
 
 
-function init() {
-  startGame();
-  getRandomWords();
-  mixElements(gameList);
-  clickFunction();
+},
 
-}
-
-const dictionary = [
+dictionary: [
   {
     id: 1,
     eng: "encounter",
@@ -115,19 +127,17 @@ const dictionary = [
     eng: "crucial",
     pl: "kluczowy",
   },
-];
+],
 
-document.getElementById("start-memory").addEventListener("click", (e)=> startGame(e));
 
-function startGame (){
-  gameBoard.innerHTML = "";
-  htmlScore.innerHTML = 0;
-  gameList=[]
+startGame (){
+  this.gameBoard.innerHTML = "";
+  this.htmlScore.innerHTML = 0;
+  this.gameList=[]
 
-}
-
-function getRandomWords() {
-  let wordsList = dictionary;
+},
+getRandomWords() {
+  let wordsList = this.dictionary;
   for (i = 0; i < 10; i++) {
     let selectedItem = wordsList[Math.floor(Math.random() * wordsList.length)];
     wordsList = wordsList.filter((x) => x.id != selectedItem.id); //lista bez wyselekcjonowanych
@@ -142,13 +152,13 @@ function getRandomWords() {
       text: selectedItem.pl,
     };
 
-    gameList.push(engWord);
-    gameList.push(plWord);
+    this.gameList.push(engWord);
+    this.gameList.push(plWord);
   }
-  console.log(gameList);
-}
 
-function mixElements(array) {
+},
+
+mixElements(array) {
   let currentIndex = array.length;
   let randomIndex;
 
@@ -166,18 +176,18 @@ function mixElements(array) {
   }
   console.log(array);
   return array;
-}
+},
 
-function clickFunction() {
-  for (let i = 0; i < gameList.length; i++) {
+clickFunction() {
+  for (let i = 0; i < this.gameList.length; i++) {
     let field = document.createElement("div");
     field.classList.add("game-field");
-    gameBoard.appendChild(field);
+    this.gameBoard.appendChild(field);
 
     //field.dataset.cardType = gameList[i];
-    field.dataset.wordId = gameList[i].id;
+    field.dataset.wordId = this.gameList[i].id;
     field.dataset.fieldId = i + 1;
-    field.dataset.text = gameList[i].text;
+    field.dataset.text = this.gameList[i].text;
   }
   let elements = Array.from(document.querySelectorAll(".game-field"));
 
@@ -185,61 +195,66 @@ function clickFunction() {
     element.addEventListener("click", (e) => {
       element.style.backgroundColor = "white";
       element.innerHTML = element.dataset.text;
-      clickedFieldsId.push(Number(element.dataset.fieldId));
-      clickedWordsId.push(Number(element.dataset.wordId));
+      this.clickedFieldsId.push(Number(element.dataset.fieldId));
+      this.clickedWordsId.push(Number(element.dataset.wordId));
 
       if (
-        clickedFieldsId.length === 2 &&
-        clickedFieldsId[0] !== clickedFieldsId[1] &&
-        clickedWordsId.length === 2 &&
-        clickedWordsId[0] === clickedWordsId[1]
+        this.clickedFieldsId.length === 2 &&
+       this.clickedFieldsId[0] !== this.clickedFieldsId[1] &&
+        this.clickedWordsId.length === 2 &&
+        this.clickedWordsId[0] === this.clickedWordsId[1]
       ) {
 
         setTimeout(()=>{
-        elements[clickedFieldsId[0] - 1].style.visibility = "hidden";
-        elements[clickedFieldsId[1] - 1].style.visibility = "hidden";
+        elements[this.clickedFieldsId[0] - 1].style.visibility = "hidden";
+        elements[this.clickedFieldsId[1] - 1].style.visibility = "hidden";
 
-        clickedFieldsId.splice(0, 2);
-        clickedWordsId.splice(0, 2);
-        score++;
+       this.clickedFieldsId.splice(0, 2);
+        this.clickedWordsId.splice(0, 2);
+        this.score++;
 
-        if(score ===10){
+        if(this.score ===10){
       
-          memoryModal.style.display = "flex";
+         this.memoryModal.style.display = "flex";
         }
       
-        htmlScore.innerHTML = score;},500)
+        this.htmlScore.innerHTML = this.score;},500)
       } else if (
-        clickedWordsId.length === 2 &&
-        clickedWordsId[0] !== clickedWordsId[1]
+        this.clickedWordsId.length === 2 &&
+        this.clickedWordsId[0] !== this.clickedWordsId[1]
       ) {
         setTimeout(() => {
           
-          elements[clickedFieldsId[0] - 1].style.backgroundColor = " rgb(248, 171, 219)";
-          elements[clickedFieldsId[1] - 1].style.backgroundColor = " rgb(248, 171, 219)";
-          elements[clickedFieldsId[0] - 1].innerHTML = "";
-          elements[clickedFieldsId[1] - 1].innerHTML = "";
+          elements[this.clickedFieldsId[0] - 1].style.backgroundColor = " rgb(248, 171, 219)";
+          elements[this.clickedFieldsId[1] - 1].style.backgroundColor = " rgb(248, 171, 219)";
+          elements[this.clickedFieldsId[0] - 1].innerHTML = "";
+          elements[this.clickedFieldsId[1] - 1].innerHTML = "";
           
-        clickedFieldsId.splice(0, 2);
-        clickedWordsId.splice(0, 2);
+        this.clickedFieldsId.splice(0, 2);
+        this.clickedWordsId.splice(0, 2);
         }, 500);
 
       } else if (
-        clickedFieldsId.length === 2 &&
-        clickedFieldsId[0] == clickedFieldsId[1]
+        this.clickedFieldsId.length === 2 &&
+        this.clickedFieldsId[0] == this.clickedFieldsId[1]
       ) {
         element.style.backgroundColor = " rgb(248, 171, 219)";
         element.innerHTML = "";
-        clickedFieldsId.splice(0, 2);
-        clickedWordsId.splice(0, 2);
+        this.clickedFieldsId.splice(0, 2);
+        this.clickedWordsId.splice(0, 2);
       }
-      console.log(score);
+     
 
       
     });
   }
  
 }
+}
+
+
+
+
 
 
 

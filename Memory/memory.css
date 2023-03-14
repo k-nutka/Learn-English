@@ -51,9 +51,10 @@ body{
     height: 30px;
     width: 300px;
     border-radius: 30px;
-    margin: 15px;
+    margin: 30px;
     font-size: 20px;
     font-weight: bold;
+   
 }
 
 .score{
@@ -69,10 +70,11 @@ body{
     display: flex;
     justify-content: end;
     align-items: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     text-align: end;
 }
+
 
 .memory-modal{
     display: none;
