@@ -179,35 +179,7 @@ function makePage(){
     }
 
 
-    
-
-
-    
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-    
-    
-
-    
-    
-
-
-
-
-
-
-function mixElements(array) {
+    function mixElements(array) {
     let currentIndex = array.length;
     let randomIndex;
   
