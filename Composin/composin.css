@@ -107,12 +107,13 @@ body{
     height: 300px;
     width: 500px;
     top:30px;
-    margin-left: 400px;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
     border-radius: 70px;
+    font-size: 20px;
+    font-weight: bold;
 
     
 }
@@ -132,6 +133,63 @@ body{
     font-weight: bold;
 }
 
+.modal-container{
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+}
 
 
+@media(max-width:650px){
+    #info-modal{
+        width: 400px;
+    }
+
+}
+
+
+@media(max-width:455px){
+
+   .composin-container{
+    height: 600px;;
+   }
+
+    h1{
+        font-size: 20px;
+    
+    }
+    .sentence{
+        width: 100%;
+        font-size: 15px;
+
+    }
+
+    .polish-version{
+        width: 100%;
+        height: 20%;
+        font-size: 15px;
+    }
+
+    .butttons-container{
+        width: 100%;
+        font-size: 15px;
+    }
+    
+    #info{
+        font-size: 15px;
+    }
+    #info-modal{
+        width: 300px;
+    }
+
+    #back, #again{
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+
+    }
+}
 
