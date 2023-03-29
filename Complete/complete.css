@@ -32,7 +32,7 @@ body{
     
 }
 
- #next, #again{
+ #next, #again, #menu{
 
 
     background-color:  #c4fcc2;
@@ -46,11 +46,13 @@ body{
     font-size: 20px;
    }
 
-   #again{
-    height: 100px;
-    width: 150px;
+   #again, #menu{
+    height: 80px;
+    width: 120px;
 
    }
+
+
    .check{
     display: flex;
     flex-direction: column;
@@ -103,6 +105,51 @@ input{
     font-weight: bold;
     border-radius: 45px;
 }
+
+
+@media(max-width: 650px){
+    h1{
+        font-size: 25px;
+    }
+    .complete-container{
+    margin-top: 25px;
+    width: 400px;
+    height: 600px;
+    font-size: 15px;
+}
+
+#result-modal{
+    width: 400px;
+    height: 600px;
+    font-size: 20px;
+    margin-top: 25px;
+
+}
+
+}
+
+@media(max-width: 420px){
+    h1{
+        font-size: 25px;
+    }
+    .complete-container{
+    margin-top: 25px;
+    width: 300px;
+    height: 600px;
+    font-size: 15px;
+}
+
+#result-modal{
+    width: 300px;
+    height: 600px;
+    font-size: 20px;
+    margin-top: 25px;
+
+}
+
+}
+
+
 
 
 

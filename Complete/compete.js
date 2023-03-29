@@ -18,6 +18,10 @@ function init() {
     );
   }
 
+  document.getElementById("menu").addEventListener("click", function(){ 
+    window.location.replace("http://127.0.0.1:5500/index.html")}
+  );
+
   
 }
 
@@ -32,6 +36,7 @@ const app = {
   resultInformation: document.getElementById("result-information"),
   nextButton: document.getElementById("next"),
   againButton: document.getElementById("again"),
+  menuButton:document.getElementById("menu"),
   result: 0,
 
   correctAnswer() {
@@ -76,9 +81,12 @@ const app = {
       this.sentences[this.index].removeAttribute("hidden");
     } else if (this.index === 10) {
       this.resultModal.style.display = "flex";
+      this.resultModal.style.borderColor = "#8fe565";
+      this.resultInformation.style.color = "#8fe565";
       this.resultInformation.innerHTML = `You got ${this.result}/10 correct answers`;
       this.nextButton.setAttribute("hidden", "hidden");
       this.againButton.removeAttribute("hidden");
+      this.menuButton.removeAttribute("hidden")
     }
   },
 
@@ -88,6 +96,7 @@ const app = {
     this.sentences[0].removeAttribute("hidden");
     this.againButton.setAttribute("hidden", "hidden");
     this.nextButton.removeAttribute("hidden");
+    
 
     for (let input of this.inputs) {
       input.value = "";
@@ -96,4 +105,6 @@ const app = {
     this.result = 0;
     this.index = 0;
   },
+
+ 
 };

@@ -109,6 +109,9 @@ const app = {
     if (this.userSentence.value === "") {
       this.result.removeAttribute("hidden");
       this.result.innerHTML = "Complete the field!!";
+      this.checkButton.removeAttribute("disabled");
+      this.nextButton.setAttribute("disabled", "disabled");
+
     } else if (
       this.userSentence.value ===
       newSentences[this.newSentenceIndex].afterTranslate
