@@ -37,7 +37,7 @@ playAgainFunction(){
 
 
 init(){
-  this.startGame();
+  
   this.getRandomWords();
   this.mixElements(this.gameList);
   this.clickFunction();
@@ -133,7 +133,9 @@ dictionary: [
 startGame (){
   this.gameBoard.innerHTML = "";
   this.htmlScore.innerHTML = 0;
-  this.gameList=[]
+  this.gameList=[];
+  this.init()
+ 
 
 },
 getRandomWords() {

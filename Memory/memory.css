@@ -111,98 +111,61 @@ body{
 }
 
 
-
 @media(max-width: 955px){
     .game-board{
+      
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(6, 1fr);
         width: 600px;
-
     }
-
     .score{
         width: 65px;
         height: 80px;
-    }
+        left:0;
+        bottom: 0;
+}
 
-    .game-field{
-        font-size: 15px;
-    }
     
 
+
 }
 
-
-@media(max-width: 710px){
+@media(max-width:610px){
     .game-board{
-        width: 500px;
-
-    }
-
-    .score{
-        width: 55px;
-        height: 80px;
-        font-size: 20px;
-    }
-}
-
-
-@media(max-width: 590px){
-    .game-board{
+      
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(10, 1fr);
         width: 400px;
-
-    }
-
-    .score{
-        width: 60px;
-        height: 80px;
-        font-size: 15px;
-        left:0;
-        bottom: 0;
-        
-        
-        
-    }
-
-
-    .game-field{
-        font-size: 10px;
-    }
-
-    .memory-modal{
-        width: 350px;
     }
 
 
 }
 
-
-@media(max-width: 410px){
+@media(max-width:410px){
     .game-board{
+      
+        
         width: 350px;
-
     }
+   
 
+}
+
+@media(max-height:740px ){
+    
     .score{
         width: 50px;
-        height: 80px;
-        font-size: 15px;
-        left:0;
-        bottom: 0;
-        
-        
-        
+        height: 40px;
+        font-size: 20px;
     }
-
-
-    .game-field{
-        font-size: 7px;
-    }
-
-    .memory-modal{
-        width: 300px;
-    }
-
+   
 
 }
+
+
+
 
 
 
