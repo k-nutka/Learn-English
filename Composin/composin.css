@@ -29,6 +29,7 @@ body{
     height: 40%;
     border-radius: 50px;
     margin:10px;
+    display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,12 @@ body{
 
     
 }
+
+
+
+
+
+
 .polish-version{
     border: 5px solid  #7d66e7;
     width: 90%;
@@ -45,6 +52,7 @@ body{
     text-align: center;
     justify-content: center;
     align-items: center;
+  
 
 }
 .butttons-container{

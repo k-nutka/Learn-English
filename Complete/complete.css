@@ -15,6 +15,7 @@ body{
     position: relative;
     display: flex;
     flex-direction: column;
+    
     width: 600px;
     height: 600px;
     background-color: white;
@@ -26,6 +27,7 @@ body{
     font-size: 20px;
     padding: 5px;
     text-align: center;
+ 
    
     
 
@@ -52,6 +54,8 @@ body{
 
    }
 
+   
+
 
    .check{
     display: flex;
@@ -66,14 +70,10 @@ body{
     border-radius: 45px;
     font-weight: bold;
     font-size: 20px;
-    margin-left: 200px;
-    margin-top: 100px;
-   
- 
-
-  
-
-   }
+    margin-left: 40%;
+    margin-top:50px;
+    
+}
 
 #result-modal{
     position: absolute;
@@ -124,6 +124,10 @@ input{
     font-size: 20px;
     margin-top: 25px;
 
+}
+
+.check{
+    margin-left: 30%
 }
 
 }
