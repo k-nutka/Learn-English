@@ -134,6 +134,7 @@ startGame (){
   this.gameBoard.innerHTML = "";
   this.htmlScore.innerHTML = 0;
   this.gameList=[];
+  this.score = 0;
   this.init()
  
 
